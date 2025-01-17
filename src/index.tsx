@@ -3,6 +3,14 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import Plausible from 'plausible-tracker'
+
+const plausible = Plausible({
+  domain: '0-th.com'
+})
+
+plausible.trackPageview();
+plausible.enableAutoPageviews();
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

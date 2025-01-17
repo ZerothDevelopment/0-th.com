@@ -1,29 +1,29 @@
-import React, { useRef, useEffect } from 'react';
-import { useFrame, useLoader } from '@react-three/fiber';
-import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader';
-import { Mesh, MeshStandardMaterial, Color } from 'three';
+import React, { useRef, useEffect } from "react";
+import { useFrame, useLoader } from "@react-three/fiber";
+import { OBJLoader } from "three/examples/jsm/loaders/OBJLoader";
+import { Mesh, MeshStandardMaterial, Color } from "three";
 
-const KnotModel: React.FC = () => {
+const KnotModel = () => {
   const primitiveRef = useRef<Mesh>(null);
-  const obj = useLoader(OBJLoader, '/torusknot1.obj');
-  
+  const obj = useLoader(OBJLoader, "/torusknot1.obj");
+
   useEffect(() => {
     if (obj) {
-      obj.traverse((child) => {
+      obj.traverse(child => {
         if (child instanceof Mesh) {
           // Create a new MeshStandardMaterial with custom properties
           const material = new MeshStandardMaterial({
-            color: new Color(0x013220),  // Green color
+            color: new Color(0x013220), // Green color
             metalness: 0.95,
             roughness: 0.25,
-            emissive: new Color(0x222222),  // Slight glow
+            emissive: new Color(0x222222) // Slight glow
           });
-          
+
           child.material = material;
         }
       });
     }
-    
+
     // Set initial rotation
     if (primitiveRef.current) {
       primitiveRef.current.rotation.x = Math.PI / 2;
@@ -44,7 +44,7 @@ const KnotModel: React.FC = () => {
     <primitive
       object={obj}
       ref={primitiveRef}
-      scale={[0.5, 0.5, 0.5]}
+      scale={[0.65, 0.65, 0.65]}
       position={[0, 0, 0]}
     />
   );

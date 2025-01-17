@@ -1,10 +1,10 @@
 // src/App.tsx
-import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Home from './pages/home';
-import Who from './pages/who';
-import Contact from './pages/contact';  
-import Portfolio from './pages/portfolio';
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Home from "./pages/home";
+import Who from "./pages/who";
+import Contact from "./pages/contact";
+import Portfolio from "./pages/portfolio";
 
 function App() {
   return (

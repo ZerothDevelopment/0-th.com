@@ -1,0 +1,46 @@
+@keyframes slideGradient {
+    0% {
+        background-position: 0% 0%;
+    }
+
+    100% {
+        background-position: 0% 200%;
+    }
+}
+
+.neon-gradient-card::before {
+    content: '';
+    position: absolute;
+    top: calc(-1 * var(--border-size));
+    left: calc(-1 * var(--border-size));
+    right: calc(-1 * var(--border-size));
+    bottom: calc(-1 * var(--border-size));
+    background: linear-gradient(0deg, var(--neon-first-color), var(--neon-second-color), var(--neon-first-color));
+    border-radius: var(--border-radius);
+    z-index: -1;
+    background-size: 100% 200%;
+}
+
+.neon-gradient-card::after {
+    content: '';
+    position: absolute;
+    top: calc(-1 * var(--border-size));
+    left: calc(-1 * var(--border-size));
+    right: calc(-1 * var(--border-size));
+    bottom: calc(-1 * var(--border-size));
+    background: linear-gradient(0deg, var(--neon-first-color), var(--neon-second-color), var(--neon-first-color));
+    border-radius: var(--border-radius);
+    z-index: -2;
+    filter: blur(var(--after-blur));
+    opacity: 0.8;
+    background-size: 100% 200%;
+}
+
+/* Enable animation only on desktop screens */
+@media (min-width: 1024px) {
+
+    .neon-gradient-card::before,
+    .neon-gradient-card::after {
+        animation: slideGradient 3s linear infinite;
+    }
+}

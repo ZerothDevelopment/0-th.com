@@ -1,93 +1,60 @@
-import React, { useRef } from 'react';
-import { ChevronRight, ChevronLeft } from 'lucide-react';
+import React, { useEffect, useState } from "react";
+import Marquee from "../@/components/magicui/marquee";
+import one from "../assets/one.png";
+import two from "../assets/two.png";
+import three from "../assets/three.png";
+import clothesapp from "../assets/clothesapp.png";
+import mixapp from "../assets/mix.png";
+import TeslaHorns from "../assets/TeslaHorns.png";
 
-const styles = `
-  .hide-scrollbar {
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-  }
-  .hide-scrollbar::-webkit-scrollbar {
-    display: none;
-  }
-`;
+interface CarouselProps {
+  duration?: string;
+  pauseOnHover?: boolean;
+}
 
-const Carousel = () => {
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
+const Carousel = ({ duration = "25s", pauseOnHover = false }: CarouselProps) => {
+  const carouselItems = [
+    { src: one, alt: "Image One" },
+    { src: two, alt: "Image Two" },
+    { src: three, alt: "Image Three" },
+    { src: clothesapp, alt: "Image Four" },
+    { src: mixapp, alt: "Image Five" },
+    { src: TeslaHorns, alt: "Image Six" }
+  ];
 
-  const scroll = (direction: 'left' | 'right') => {
-    if (scrollContainerRef.current) {
-      const scrollAmount = scrollContainerRef.current.clientWidth;
-      scrollContainerRef.current.scrollBy({
-        left: direction === 'left' ? -scrollAmount : scrollAmount,
-        behavior: 'smooth'
-      });
-    }
-  };
+  useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  const isMobile = windowWidth <= 768;
 
   return (
-    <>
-      <style>{styles}</style>
-      <div style={{ position: 'relative', width: '100%', backgroundColor: 'black', overflow: 'hidden', padding: '16px' }}>
-        <div 
-          ref={scrollContainerRef}
-          className="hide-scrollbar"
-          style={{ 
-            display: 'flex', 
-            overflowX: 'auto', 
-            scrollSnapType: 'x mandatory',
-          }}
-        >
-          {[...Array(10)].map((_, index) => (
-            <div 
-              key={index} 
-              style={{ 
-                flexShrink: 0, 
-                width: '320px', 
-                height: '320px', 
-                backgroundColor: '#a3a3a3', 
-                borderRadius: '8px', 
-                marginRight: '16px', 
-                scrollSnapAlign: 'start' 
-              }} 
+    <div
+      style={{ width: isMobile ? "48vh" : "100%" }}
+      className="w-full relative overflow-hidden bg-black"
+    >
+      <div className="absolute top-0 left-0 w-1/6 h-full bg-gradient-to-r from-black to-transparent z-10"></div>
+      <div className="absolute top-0 right-0 w-1/6 h-full bg-gradient-to-l from-black to-transparent z-10"></div>
+      <Marquee
+        className="py-4"
+        pauseOnHover={pauseOnHover}
+        style={{ "--duration": duration } as React.CSSProperties}
+      >
+        {carouselItems.map((item, index) => (
+          <div key={index} className="mx-4 inline-block">
+            <img
+              src={item.src}
+              alt={item.alt}
+              className="h-80 w-auto object-contain"
             />
-          ))}
-        </div>
-        <button
-          onClick={() => scroll('left')}
-          style={{
-            position: 'absolute',
-            left: '16px',
-            top: '50%',
-            transform: 'translateY(-50%)',
-            backgroundColor: 'rgba(0, 0, 0, 0.5)',
-            color: 'white',
-            border: 'none',
-            borderRadius: '50%',
-            padding: '8px',
-            cursor: 'pointer'
-          }}
-        >
-          <ChevronLeft size={24} />
-        </button>
-        <button
-          onClick={() => scroll('right')}
-          style={{
-            position: 'absolute',
-            right: '16px',
-            top: '50%',
-            transform: 'translateY(-50%)',
-            backgroundColor: 'rgba(0, 0, 0, 0.5)',
-            color: 'white',
-            border: 'none',
-            borderRadius: '50%',
-            padding: '8px',
-            cursor: 'pointer'
-          }}
-        >
-          <ChevronRight size={24} />
-        </button>
-      </div>
-    </>
+          </div>
+        ))}
+      </Marquee>
+    </div>
   );
 };
 

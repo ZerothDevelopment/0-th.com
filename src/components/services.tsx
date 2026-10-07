@@ -14,7 +14,7 @@ import wandIcon from "../assets/icons/wand.and.stars.png"
 const services = [
   { title: "Software, Website, and App Development", icon: laptopIcon },
   { title: "Collaborative Brand-Oriented Design", icon: scaleIcon },
-  { title: "E-Commerce Solutions and Managment", icon: cardIcon },
+  { title: "E-Commerce Solutions and Management", icon: cardIcon },
   { title: "Daily Business Operations", icon: magnifyingGlassIcon },
   { title: "App and Extension Integration", icon: networkIcon },
   { title: "Customer Acquisition and Data Management", icon: peopleIcon },

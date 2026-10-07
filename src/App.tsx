@@ -25,7 +25,7 @@ function App() {
           padding: "20px"
         }}
       >
-        © {new Date().getFullYear()} Zeroth LLC ·{" "}
+        © {new Date().getFullYear()} Zeroth LLC · Wyoming · Founded 2024 ·{" "}
         <a href="mailto:contact@0-th.com" style={{ color: "#888888" }}>
           contact@0-th.com
         </a>

@@ -32,7 +32,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-scripts build && for p in who contact portfolio; do cp build/index.html build/$p.html; done",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",

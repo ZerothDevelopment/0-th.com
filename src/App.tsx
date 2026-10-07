@@ -15,6 +15,21 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/portfolio" element={<Portfolio />} />
       </Routes>
+      <footer
+        style={{
+          backgroundColor: "#000000",
+          color: "#888888",
+          fontFamily: "'Shippori Antique B1', sans-serif",
+          fontSize: "14px",
+          textAlign: "center",
+          padding: "20px"
+        }}
+      >
+        © {new Date().getFullYear()} Zeroth LLC ·{" "}
+        <a href="mailto:contact@0-th.com" style={{ color: "#888888" }}>
+          contact@0-th.com
+        </a>
+      </footer>
     </Router>
   );
 }

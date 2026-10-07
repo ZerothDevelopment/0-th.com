@@ -39,7 +39,7 @@ const Portfolio = () => {
         <p style={{ color: "#FFFFFF", marginBottom: "40px" }}> Trusted By </p>
         <img
           src={companies}
-          alt="Companies"
+          alt="Clients: AdEasel, Yeezy, Los Angeles Apparel, Open Agents, TheStartup.com"
           style={{ width: "100%", height: "auto" }}
         />
       </div>

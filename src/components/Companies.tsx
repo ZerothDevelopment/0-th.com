@@ -18,11 +18,11 @@ const Companies = ({
   reverse = false
 }: CompaniesProps) => {
   const companiesItems = [
-    { src: companyImage1, alt: "Image One" },
-    { src: companyImage2, alt: "Image Two" },
-    { src: companyImage3, alt: "Image Three" },
-    { src: companyImage4, alt: "Image Three" },
-    { src: companyImage5, alt: "Image Three" }
+    { src: companyImage1, alt: "Yeezy" },
+    { src: companyImage2, alt: "Los Angeles Apparel" },
+    { src: companyImage3, alt: "Open Agents" },
+    { src: companyImage4, alt: "TheStartup.com" },
+    { src: companyImage5, alt: "AdEasel" }
   ];
 
   const [windowWidth] = useState(window.innerWidth);
